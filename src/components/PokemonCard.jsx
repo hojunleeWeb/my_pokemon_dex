@@ -24,10 +24,16 @@ const StyledPokeCardBtn = styled.button`
 export default function PokemonCard({ pokemon, onAdd }) {
     return (
         <StyledCard>
-            <img src={pokemon.img_url} alt={pokemon.korean_name} className="w-20 h-20" />
-            <h3 className="font-bold mt-2">{pokemon.korean_name}</h3>
-            <p className="text-sm text-gray-600">{pokemon.types.join(", ")}</p>
-            <StyledPokeCardBtn onClick={() => onAdd(pokemon)}>추가</StyledPokeCardBtn>
+            <img src={pokemon.img_url} alt={pokemon.korean_name} />
+            <h3>{pokemon.korean_name}</h3>
+            <p>{pokemon.types.join(" , ")}</p>
+            <StyledPokeCardBtn
+                onClick={() => {
+                    onAdd(pokemon);
+                }}
+            >
+                추가
+            </StyledPokeCardBtn>
         </StyledCard>
     );
 }
