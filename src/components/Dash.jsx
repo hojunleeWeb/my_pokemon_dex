@@ -1,19 +1,6 @@
 import React, { PureComponent } from "react";
-
+import StyledPokeCardBtn from "../style/StylePokeCardBtn";
 import styled from "styled-components";
-
-const StyledDashContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    background-color: gray;
-    border-radius: 20px;
-    width: 100%;
-    height: 400px;
-    padding: 10px;
-`;
 
 const StyledDashItemContainer = styled.div`
     display: flex;
@@ -48,18 +35,16 @@ const StyledDashItem = styled.div`
     margin: 10px;
 `;
 
-const StyledPokeCardBtn = styled.button`
-    background-color: red;
-    color: white;
-    border: 1px solid red;
-    border-radius: 10px;
-    width: 100px;
+const StyledPTag = styled.p`
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
 `;
 
 const Dash = ({ SelectedArray, onRemove }) => {
     return (
-        <StyledDashContainer>
-            <p>나만의 포켓몬</p>
+        <>
+            <StyledPTag>나만의 포켓몬</StyledPTag>
             <StyledDashItemContainer>
                 {SelectedArray.map((pokemon) => {
                     if (pokemon.korean_name == null) {
@@ -91,7 +76,7 @@ const Dash = ({ SelectedArray, onRemove }) => {
                     }
                 })}
             </StyledDashItemContainer>
-        </StyledDashContainer>
+        </>
     );
 };
 

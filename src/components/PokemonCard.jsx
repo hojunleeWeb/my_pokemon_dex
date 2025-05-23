@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import StyledPokeCardBtn from "../style/StylePokeCardBtn";
 
 const StyledCard = styled.div`
     border: solid 1px black;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: white;
     width: auto;
-    height: 350px;
+    height: 300px;
+    margin: 10px;
 `;
 
 export default function PokemonCard({ pokemon, onAdd }) {
