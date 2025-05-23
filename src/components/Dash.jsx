@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 
 import styled from "styled-components";
 
-const StyledDashDiv = styled.div`
+const StyledDashContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +15,7 @@ const StyledDashDiv = styled.div`
     padding: 10px;
 `;
 
-const StyledDashFlex = styled.div`
+const StyledDashItemContainer = styled.div`
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -23,38 +23,75 @@ const StyledDashFlex = styled.div`
     flex-wrap: wrap;
     justify-content: space-around;
 `;
-
-const StyledImage = styled.img`
-    width: 100px;
-    height: 100px;
+const StyledImageDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
     border-radius: 10%;
     margin: 10px;
     border: 2px dashed black;
     background-color: white;
 `;
-const Dash = ({ selected, selectedCount, onRemove }) => {
+
+const StyledDashItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 150px;
+    height: 250px;
+    margin: 10px;
+`;
+
+const StyledPokeCardBtn = styled.button`
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+    border-radius: 10px;
+    width: 100px;
+`;
+
+const Dash = ({ SelectedArray, onRemove }) => {
     return (
-        <StyledDashDiv>
+        <StyledDashContainer>
             <p>나만의 포켓몬</p>
-            <StyledDashFlex>
-                {selectedCount === 0
-                    ? Array.from({ length: 6 }, (_, index) => (
-                          <div key={index}>
-                              <StyledImage
-                                  src="https://i.namu.wiki/i/x7KrsctDuACm2dLbaM0X2Uag7BoL9sf9DLVauPztdApPBPn5yL1rMm8fSOBuREhK9lAKskl7oJ177UuValUIcg.webp"
-                                  alt="placeholder"
-                              />
-                          </div>
-                      ))
-                    : selected.map((pokemon) => (
-                          <div key={pokemon.id}>
-                              <StyledImage src={pokemon.img_url} alt={pokemon.korean_name} />
-                              <h3>{pokemon.korean_name}</h3>
-                              <button onClick={() => onRemove(pokemon.id)}>삭제</button>
-                          </div>
-                      ))}
-            </StyledDashFlex>
-        </StyledDashDiv>
+            <StyledDashItemContainer>
+                {SelectedArray.map((pokemon) => {
+                    if (pokemon.korean_name == null) {
+                        console.log(`null pokemon encountered`);
+                        return (
+                            <StyledImageDiv key={pokemon.id}>
+                                <img
+                                    src={
+                                        "https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png"
+                                    }
+                                    alt={null}
+                                />
+                            </StyledImageDiv>
+                        );
+                    } else {
+                        return (
+                            <StyledDashItem key={pokemon.id}>
+                                <img src={pokemon.img_url} alt={pokemon.korean_name} />
+                                <p>{pokemon.korean_name}</p>
+                                <StyledPokeCardBtn
+                                    onClick={() => {
+                                        onRemove(pokemon.id);
+                                    }}
+                                >
+                                    제거
+                                </StyledPokeCardBtn>
+                            </StyledDashItem>
+                        );
+                    }
+                })}
+            </StyledDashItemContainer>
+        </StyledDashContainer>
     );
 };
 

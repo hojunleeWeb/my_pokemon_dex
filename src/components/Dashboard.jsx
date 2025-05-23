@@ -2,14 +2,22 @@ import React from "react";
 import Dash from "./Dash";
 
 const Dashboard = ({ selected, onRemove }) => {
-    const selectedCount = selected.length;
+    const SelectedArray = () => {
+        if (selected.length < 6) {
+            const nulls = Array.from({ length: 6 - selected.length }, (idx) => {
+                return {
+                    id: idx,
+                    img_url: "https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png",
+                    korean_name: null,
+                };
+            });
+            return [...selected, ...nulls];
+        }
+        return selected;
+    };
     return (
         <>
-            {selected.length === 0 ? (
-                <Dash selected={selected} selectedCount={selectedCount} onRemove={onRemove} />
-            ) : (
-                <Dash selected={selected} selectedCount={selectedCount} onRemove={onRemove} />
-            )}
+            <Dash SelectedArray={SelectedArray()} onRemove={onRemove} />
         </>
     );
 };

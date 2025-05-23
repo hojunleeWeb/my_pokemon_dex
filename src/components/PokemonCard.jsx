@@ -13,14 +13,6 @@ const StyledCard = styled.div`
     height: 350px;
 `;
 
-const StyledPokeCardBtn = styled.button`
-    background-color: red;
-    color: white;
-    border: 1px solid red;
-    border-radius: 10px;
-    width: 100px;
-`;
-
 export default function PokemonCard({ pokemon, onAdd }) {
     return (
         <StyledCard>
