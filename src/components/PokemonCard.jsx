@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import StyledPokeCardBtn from "../style/StylePokeCardBtn";
+import { useNavigate } from "react-router-dom";
 
 const StyledCard = styled.div`
     border: solid 1px black;
@@ -16,9 +17,17 @@ const StyledCard = styled.div`
 `;
 
 export default function PokemonCard({ pokemon, onAdd }) {
+    const navigate = useNavigate();
+
     return (
         <StyledCard>
-            <img src={pokemon.img_url} alt={pokemon.korean_name} />
+            <img
+                src={pokemon.img_url}
+                alt={pokemon.korean_name}
+                onClick={() => {
+                    navigate(`/dex/${pokemon.id}`);
+                }}
+            />
             <h3>{pokemon.korean_name}</h3>
             <p>{pokemon.types.join(" , ")}</p>
             <StyledPokeCardBtn

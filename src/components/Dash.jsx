@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import StyledPokeCardBtn from "../style/StylePokeCardBtn";
 import styled from "styled-components";
 
