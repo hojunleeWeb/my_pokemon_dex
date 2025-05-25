@@ -16,7 +16,7 @@ const StyledCard = styled.div`
     margin: 10px;
 `;
 
-export default function PokemonCard({ pokemon, onAdd }) {
+const PokemonCard = ({ pokemon, onAdd }) => {
     const navigate = useNavigate();
 
     return (
@@ -39,4 +39,6 @@ export default function PokemonCard({ pokemon, onAdd }) {
             </StyledPokeCardBtn>
         </StyledCard>
     );
-}
+};
+
+export default PokemonCard;

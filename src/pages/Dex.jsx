@@ -1,6 +1,7 @@
 import MOCK_DATA from "../mock";
 import PokemonList from "../components/PokemonList";
 import styled from "styled-components";
+import { PokemonContext } from "../context/PokemonContext";
 
 const StyledDexDiv = styled.div`
     margin: 0 auto;
@@ -8,7 +9,9 @@ const StyledDexDiv = styled.div`
 const Dex = () => {
     return (
         <StyledDexDiv>
-            <PokemonList pokemons={MOCK_DATA} />
+            <PokemonContext.Provider value={{ pokemons: MOCK_DATA }}>
+                <PokemonList />
+            </PokemonContext.Provider>
         </StyledDexDiv>
     );
 };

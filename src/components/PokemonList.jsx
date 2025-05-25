@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
 import Dashboard from "./Dashboard";
+import { PokemonContext } from "../context/PokemonContext";
 
 const StyledPokemonContainer = styled.div`
     display: flex;
@@ -24,8 +25,10 @@ const StyledPokemonGrid = styled.div`
     border-radius: 20px;
 `;
 
-const PokemonList = ({ pokemons }) => {
+const PokemonList = () => {
     //pokemons는 porps로 받아온 데이터 -> mock.js에서 가져온 데이터
+    //2. useContext를 사용하여 PokemonContext에서 pokemons를 가져온다.
+    const { pokemons } = useContext(PokemonContext);
 
     //selected는 Dashboard에서 선택된 pokemon을 관리하는 state
     const [selected, setSelected] = useState([]);

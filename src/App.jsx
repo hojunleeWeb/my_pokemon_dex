@@ -1,5 +1,6 @@
+import React from "react";
 import styled from "styled-components";
-import Router from "./router.jsx";
+import AppRouter from "./router";
 
 const AppWrapper = styled.div`
     width: 95%;
@@ -14,9 +15,11 @@ const AppWrapper = styled.div`
     }
 `;
 
-const App = () => (
-    <AppWrapper>
-        <Router />
-    </AppWrapper>
-);
+const App = () => {
+    return (
+        <AppWrapper>
+            <AppRouter />
+        </AppWrapper>
+    );
+};
 export default App;
