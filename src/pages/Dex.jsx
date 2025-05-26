@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { PokemonContext } from "../context/PokemonContext";
 
 const StyledDexDiv = styled.div`
+    width: 100%;
     margin: 0 auto;
 `;
 const Dex = () => {
